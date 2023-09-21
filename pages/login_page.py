@@ -7,7 +7,7 @@ from base.base_class import Base
 
 class Login_page(Base):
 
-    url = 'https://optom-brend.ru/'
+    url = 'https://ivtekstil-shop.ru/user/login'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -16,10 +16,10 @@ class Login_page(Base):
 
     # Locators
 
-    user_name = "//input[@name='email']"
-    password = "//input[@name='password']"
-    login_button = "//input[@class='js-log-form-submit']"
-    main_word = "//a[@class='nav__main__item__link js-pop-up-active']"
+    user_name = "//input[@id='email']"
+    password = "//input[@id='sites_client_pass']"
+    login_button = "//button[@id='send2']"
+    main_word = "//span[@class='text']"
 
     # Getters
 
@@ -55,7 +55,7 @@ class Login_page(Base):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
-        self.input_user_name("standard_user")
-        self.input_password("secret_sauce")
+        self.input_user_name("testmail-1998@mail.ru")
+        self.input_password("testpass")
         self.click_login_button()
-        self.assert_word(self.get_main_word(),"Products")
+        self.assert_word(self.get_main_word(),"Меню")
