@@ -21,19 +21,13 @@ def test_buy_product_1():
     login.authorization()
 
     ip = Item_page(driver)
-    ip.move_to_category()
-    ip.click_select_product_1()
-    ip.add_to_cart_prod_1()
-    ip.click_close_window()
-
+    ip.choose_category()
+    ip.filter_item()
+    ip.select_products_1()
     ip.back_to()
-    ip.scroll_to()
-    ip.click_select_product_2()
-    ip.add_to_cart_prod_2()
-    ip.click_close_window()
+    ip.select_products_2()
+
     ip.click_cart()
-
-
 
 
     print("Finish test 1")
