@@ -76,7 +76,11 @@ class Order_page(Base):
     # Methods
     def input_information(self):
         self.get_current_url()
-        self.input_first_name("Ivan")
-        self.input_last_name("Ivanov")
-        self.input_postal_code("1234")
-        self.click_continue_button()
+        self.input_region("Московская область")
+        self.input_city("Москва")
+        self.input_address("ул. Московская, д.29/1")
+        self.input_zip_code("1234")
+        self.input_comment("Тестовый комментарий")
+        self.click_select_payment()
+        self.click_chosen_payment()
+        self.click_order_button()
