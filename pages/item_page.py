@@ -7,13 +7,11 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
 
-
 class Item_page(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-
 
     # Locators
 
@@ -24,6 +22,8 @@ class Item_page(Base):
     select_product_2 = "//a[@title='Платье 59208 [молочный]']"
     add_to_cart_product_1 = "//button[@title='Положить «Платье 24652 [красный]» в корзину']"
     add_to_cart_product_2 = "//button[@title='Положить «Платье 59208 [молочный]» в корзину']"
+    choose_size_product = "//select[@class='selectBox']"
+    select_size_product = "//option[@value='3113124']"
     close_window = "//a[@class='fancybox-item fancybox-close']"
     cart = "//span[@class='header-toolsIcon _cart']"
     filter_price = "//input[@id='goods-filter-max-price']"
@@ -31,11 +31,9 @@ class Item_page(Base):
     show_all_colors = "//span[@class='filter-moreText pseudo-link']"
     color_checkbox_1 = "//label[@for='filterAttrVal9166786']"
     color_checkbox_2 = "//label[@for='filterAttrVal15222981']"
-    size = "//label[@for='filterPropVal3139011']"
-
+    size = "//label[@for='filterPropVal3113124']"
 
     # GETTERS
-
     def get_item_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.item_button)))
 
@@ -57,6 +55,12 @@ class Item_page(Base):
     def get_cart_product_2(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_product_2)))
 
+    def get_choose_size_product(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.choose_size_product)))
+
+    def get_select_size_product(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_size_product)))
+
     def get_cart(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
     def get_close_window(self):
@@ -77,7 +81,6 @@ class Item_page(Base):
 
 
     # ACTIONS
-
     def move_to_item(self):
         actions = ActionChains(self.driver)
         actions.move_to_element(self.get_item_button())
@@ -154,9 +157,17 @@ class Item_page(Base):
         self.get_button_show().click()
         print("Нажали кнопку применить")
 
+    def click_choose_size_product(self):
+        self.get_choose_size_product().click()
+        print("Нажали на поле с размером")
+
+    def click_select_size_product(self):
+        self.get_select_size_product().click()
+        print("Выбрали размер")
+
     # METHODS
     def choose_category(self):
-        #self.get_current_url()
+        self.get_current_url()
         self.move_to_item()
         self.move_to_catalog()
         self.move_to_category()
@@ -167,15 +178,19 @@ class Item_page(Base):
         self.click_color_checkbox_1()
         self.click_show_all_colors()
         self.click_color_checkbox_2()
-        self.input_price("1850")
+        self.input_price("1840")
         self.click_button_show()
 
     def select_products_1(self):
         self.click_select_product_1()
+        self.click_choose_size_product()
+        self.click_select_size_product()
         self.add_to_cart_prod_1()
         self.click_close_window()
 
     def select_products_2(self):
         self.click_select_product_2()
+        self.click_choose_size_product()
+        self.click_select_size_product()
         self.add_to_cart_prod_2()
         self.click_close_window()
