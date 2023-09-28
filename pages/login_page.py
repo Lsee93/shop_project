@@ -4,7 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
 
-
 class Login_page(Base):
 
     url = 'https://ivtekstil-shop.ru/user/login'
@@ -13,16 +12,14 @@ class Login_page(Base):
         super().__init__(driver)
         self.driver = driver
 
-
-    # Locators
+    # LOCATORS
 
     user_name = "//input[@id='email']"
     password = "//input[@id='sites_client_pass']"
     login_button = "//button[@id='send2']"
     main_word = "//span[@class='text']"
 
-    # Getters
-
+    # GETTERS
     def get_user_name(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_name)))
 
@@ -35,7 +32,7 @@ class Login_page(Base):
     def get_main_word(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.main_word)))
 
-    # Actions
+    # ACTIONS
 
     def input_user_name(self, user_name):
         self.get_user_name().send_keys(user_name)
@@ -49,7 +46,7 @@ class Login_page(Base):
         self.get_login_button().click()
         print("Click login button")
 
-    # Methods
+    # METHODS
 
     def authorization(self):
         self.driver.get(self.url)

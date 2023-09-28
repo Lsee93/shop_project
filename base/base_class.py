@@ -1,6 +1,5 @@
 import datetime
 
-
 class Base():
     def __init__(self, driver):
         self.driver = driver
@@ -12,7 +11,6 @@ class Base():
         print("Current URL " + get_url)
 
     """Method assert word"""
-
     def assert_word(self, word, result):
         value_word = word.text
         assert value_word == result

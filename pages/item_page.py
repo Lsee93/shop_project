@@ -167,7 +167,6 @@ class Item_page(Base):
 
     # METHODS
     def choose_category(self):
-        self.get_current_url()
         self.move_to_item()
         self.move_to_catalog()
         self.move_to_category()

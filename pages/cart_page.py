@@ -12,20 +12,18 @@ class Cart_page(Base):
         self.driver = driver
 
 
-    # Locators
-
+    # LOCATORS
     order_button = "//a[@id='startOrder']"
 
-    # Getters
+    # GETTERS
     def get_order_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.order_button)))
 
-    # Actions
+    # ACTIONS
     def click_order_button(self):
         self.get_order_button().click()
-        print("Click order button")
+        print("Нажали перейти к оформлению")
 
-    # Methods
-    def product_confirmation(self):
-        self.get_current_url()
+    # METHODS
+    def start_order(self):
         self.click_order_button()
