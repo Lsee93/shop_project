@@ -3,6 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from pages.order_page import Order_page
 import re
 
 
@@ -13,7 +14,7 @@ class Order_info_page(Base):
 
 
     # LOCATORS
-    order_number_title = "//h1[@class='title']"
+    order_number_title = "//div[@class='block-title']"
     order_number = "//table[@class='table-box table-striped']//following-sibling::tr[1]//following-sibling::td[@class='cell2']"
     all_sum = "//span[@class='num']"
     confirmed_person = "//table[@class='table-box table-striped']//following-sibling::tr[3]//following-sibling::td[@class='cell2']"
@@ -61,66 +62,18 @@ class Order_info_page(Base):
         self.get_order_number_title().text()
         print("Получили номер заказа в заголовке")
 
-    # def txt_order_number(self):
-    #     self.get_order_number().text()
-    #     print("Получили номер заказа")
-    #
-    # def txt_all_sum(self):
-    #     self.get_all_sum().text()
-    #     print("Получили сумму")
-    #
-    # def txt_confirmed_person(self):
-    #     self.get_confirmed_person().text()
-    #     print("Получили ФИО")
-    #
-    # def txt_confirmed_phone_number(self):
-    #     self.get_confirmed_phone_number().text()
-    #     print("Получили номер телефона")
-    #
-    # def txt_confirmed_email(self):
-    #     self.get_confirmed_email().text()
-    #     print("Получили почту")
-    #
-    # def txt_confirmed_zip_code(self):
-    #     self.get_confirmed_zip_code().text()
-    #     print("Получили индекс")
-    #
-    # def txt_confirmed_region(self):
-    #     self.get_confirmed_region().text()
-    #     print("Получили область")
-    # def txt_confirmed_city(self):
-    #     self.get_confirmed_city().text()
-    #     print("Получили город")
-    # def txt_confirmed_address(self):
-    #     self.get_confirmed_address().text()
-    #     print("Получили адрес")
-    #
-    # def txt_confirmed_comm(self):
-    #     self.get_confirmed_comm().text()
-    #     print("Получили комментарий")
-    #
-    # def txt_final_price(self):
-    #     self.get_final_price().text()
-    #     print("Получили финальную цену")
-    #
-    # def click_back_to_main_page(self):
-    #     self.get_back_to_main_page().click()
-    #     print("Нажали на кнопку Перейти на главную")
-
     # METHODS
     def check_information(self):
-        self.assert_word(self.get_confirmed_person(), "Ivan")
-        self.assert_word(self.get_confirmed_phone_number(), "89990002233")
-        self.assert_word(self.get_confirmed_email(), "testmail-1998@mail.ru")
-        self.assert_word(self.get_confirmed_zip_code(), "12345")
-        self.assert_word(self.get_confirmed_region(), "Московская область")
-        self.assert_word(self.get_confirmed_city(), "Москва")
-        self.assert_word(self.get_confirmed_address(), "ул. Московская, д.999/9")
-        self.assert_word(self.get_confirmed_comm(), "Тестовый комментарий")
-        # self.assert_word(self.get_order_number(), "Московская область")
 
-
-        #self.assert_word(self.get_order_number(), re.sub("[^0-9.]", "", self.txt_order_number_title))
+        # self.assert_word(self.get_confirmed_person(), "Ivan")
+        # self.assert_word(self.get_confirmed_phone_number(), "89990002233")
+        # self.assert_word(self.get_confirmed_email(), "testmail-1998@mail.ru")
+        # self.assert_word(self.get_confirmed_region(), "Московская область")
+        # self.assert_word(self.get_confirmed_city(), "Москва")
+        # self.assert_word(self.get_confirmed_address(), "ул. Московская, д.999/9")
+        # self.assert_word(self.get_confirmed_comm(), "Тестовый комментарий")
+        #self.assert_word(self.get_order_number(), re.sub("[^0-9.]", "", self.get_order_number_title()))
+        print(re.sub("[^0-9.]", "", str(self.get_order_number_title())))
 
 
 

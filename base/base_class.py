@@ -16,6 +16,11 @@ class Base():
         assert value_word == result
         print("Наименование совпадает")
 
+    def assert_word_between_elements(self, element_1, element_2):
+        value_element_1 = element_1.text
+        value_element_2 = element_2.text
+        assert value_element_1 == value_element_2
+        print("Введенные данные совпадают")
 
     """Method Screenshot"""
     def get_screenshot(self):
