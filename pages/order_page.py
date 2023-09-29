@@ -81,4 +81,4 @@ class Order_page(Base):
         self.input_comment("Тестовый комментарий")
         self.click_select_payment()
         self.click_chosen_payment()
-        #self.click_order_button()
+        self.click_order_button()

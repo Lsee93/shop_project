@@ -19,9 +19,9 @@ class Item_page(Base):
     select_catalog = "//a[@title='Трикотаж']"
     select_category = "//a[@title='Платья']"
     select_product_1 = "//a[@title='Платье 24652 [красный]']"
-    select_product_2 = "//a[@title='Платье 59208 [молочный]']"
+    select_product_2 = "//a[@title='Платье 59208 [мокко]']"
     add_to_cart_product_1 = "//button[@title='Положить «Платье 24652 [красный]» в корзину']"
-    add_to_cart_product_2 = "//button[@title='Положить «Платье 59208 [молочный]» в корзину']"
+    add_to_cart_product_2 = "//button[@title='Положить «Платье 59208 [мокко]» в корзину']"
     choose_size_product = "//select[@class='selectBox']"
     select_size_product = "//option[@value='3113124']"
     close_window = "//a[@class='fancybox-item fancybox-close']"
@@ -30,7 +30,7 @@ class Item_page(Base):
     button_show = "//button[@title='Показать']"
     show_all_colors = "//span[@class='filter-moreText pseudo-link']"
     color_checkbox_1 = "//label[@for='filterAttrVal9166786']"
-    color_checkbox_2 = "//label[@for='filterAttrVal15222981']"
+    color_checkbox_2 = "//label[@for='filterAttrVal20809210']"
     size = "//label[@for='filterPropVal3113124']"
 
     # GETTERS

@@ -9,6 +9,7 @@ from selenium import webdriver
 from pages.cart_page import Cart_page
 from pages.item_page import Item_page
 from pages.login_page import Login_page
+from pages.order_info_page import Order_info_page
 from pages.order_page import Order_page
 
 
@@ -34,6 +35,9 @@ def test_buy_product_1():
     cp.start_order()
     op = Order_page(driver)
     op.input_information()
+
+    oip = Order_info_page(driver)
+    oip.check_information()
 
     print("Finish test 1")
     time.sleep(5)
