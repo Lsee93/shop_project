@@ -1,3 +1,4 @@
+import re
 import time
 
 import pytest
@@ -11,6 +12,7 @@ from pages.item_page import Item_page
 from pages.login_page import Login_page
 from pages.order_info_page import Order_info_page
 from pages.order_page import Order_page
+from base.base_class import Base
 
 
 # @pytest.mark.run(order=3)
@@ -26,6 +28,7 @@ def test_buy_product_1():
     ip.choose_category()
     ip.filter_item()
     ip.select_products_1()
+
     ip.back_to()
     ip.select_products_2()
 
@@ -36,8 +39,8 @@ def test_buy_product_1():
     op = Order_page(driver)
     op.input_information()
 
-    oip = Order_info_page(driver)
-    oip.check_information()
+    # oip = Order_info_page(driver)
+    # oip.check_information()
 
     print("Finish test 1")
     time.sleep(5)

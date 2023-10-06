@@ -4,7 +4,6 @@ class Base():
     def __init__(self, driver):
         self.driver = driver
 
-
     """Method get current url"""
     def get_current_url(self):
         get_url = self.driver.current_url
@@ -16,11 +15,12 @@ class Base():
         assert value_word == result
         print("Наименование совпадает")
 
-    def assert_word_between_elements(self, element_1, element_2):
-        value_element_1 = element_1.text
-        value_element_2 = element_2.text
+    """Method assert value"""
+    def assert_value_between_elements(self, element_1, element_2):
+        value_element_1 = float(element_1.text)
+        value_element_2 = float(element_2.text)
         assert value_element_1 == value_element_2
-        print("Введенные данные совпадают")
+        print("Значения совпадают")
 
     """Method Screenshot"""
     def get_screenshot(self):

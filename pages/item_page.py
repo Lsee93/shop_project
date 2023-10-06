@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from selenium import webdriver
 
 class Item_page(Base):
 
@@ -32,42 +33,33 @@ class Item_page(Base):
     color_checkbox_1 = "//label[@for='filterAttrVal9166786']"
     color_checkbox_2 = "//label[@for='filterAttrVal20809210']"
     size = "//label[@for='filterPropVal3113124']"
+    price_in_cart = "//span[@class='price goodsDataMainModificationPriceNow RUB']"
 
     # GETTERS
     def get_item_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.item_button)))
-
     def get_select_catalog(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_catalog)))
-
     def get_select_category(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_category)))
-
     def get_select_product_1(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_1)))
-
     def get_select_product_2(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_product_2)))
-
     def get_cart_product_1(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_product_1)))
-
     def get_cart_product_2(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_product_2)))
-
     def get_choose_size_product(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.choose_size_product)))
-
     def get_select_size_product(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.select_size_product)))
-
     def get_cart(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart)))
     def get_close_window(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.close_window)))
     def get_filter_price(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.filter_price)))
-
     def get_button_show(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.button_show)))
     def get_show_all_colors(self):
@@ -78,6 +70,8 @@ class Item_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.color_checkbox_2)))
     def get_size(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.size)))
+    def get_price_in_cart(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_in_cart)))
 
 
     # ACTIONS
@@ -165,6 +159,10 @@ class Item_page(Base):
         self.get_select_size_product().click()
         print("Выбрали размер")
 
+    def get_price_txt(self):
+        self.get_price_in_cart().text
+        print("Получили цену товара")
+
     # METHODS
     def choose_category(self):
         self.move_to_item()
@@ -184,6 +182,7 @@ class Item_page(Base):
         self.click_select_product_1()
         self.click_choose_size_product()
         self.click_select_size_product()
+        self.get_price_txt()
         self.add_to_cart_prod_1()
         self.click_close_window()
 
@@ -191,5 +190,6 @@ class Item_page(Base):
         self.click_select_product_2()
         self.click_choose_size_product()
         self.click_select_size_product()
+        self.get_price_txt()
         self.add_to_cart_prod_2()
         self.click_close_window()
